@@ -1,0 +1,89 @@
+========================================
+CRON JOB SETUP FOR YOUR SERVER
+========================================
+
+Your Server Path: /home/users/2/main.jp-exseed/web/WG/analysis/OCC/
+
+Copy and paste ONE of these commands into your Lolipop cron job settings:
+
+----------------------------------------
+OPTION 1: Every 15 Minutes (RECOMMENDED - Near Real-Time)
+----------------------------------------
+*/15 * * * * /usr/bin/php /home/users/2/main.jp-exseed/web/WG/analysis/OCC/auto_import_cron.php
+
+This will update your data every 15 minutes automatically.
+
+
+----------------------------------------
+OPTION 2: Every 30 Minutes (Good Balance)
+----------------------------------------
+*/30 * * * * /usr/bin/php /home/users/2/main.jp-exseed/web/WG/analysis/OCC/auto_import_cron.php
+
+This will update your data every 30 minutes.
+
+
+----------------------------------------
+OPTION 3: Every Hour (Standard)
+----------------------------------------
+0 * * * * /usr/bin/php /home/users/2/main.jp-exseed/web/WG/analysis/OCC/auto_import_cron.php
+
+This will update your data at the top of every hour (1:00, 2:00, 3:00, etc.)
+
+
+----------------------------------------
+OPTION 4: Daily at 3 AM (Once Per Day)
+----------------------------------------
+0 3 * * * /usr/bin/php /home/users/2/main.jp-exseed/web/WG/analysis/OCC/auto_import_cron.php
+
+This will update your data once per day at 3:00 AM.
+
+
+========================================
+HOW TO SET UP IN LOLIPOP:
+========================================
+
+1. Login to Lolipop Control Panel
+   URL: https://user.lolipop.jp/
+
+2. Find "定期実行設定" or "Cron設定" (Cron Settings)
+   - Look in the left sidebar menu
+   - May be under "サーバー設定" (Server Settings)
+
+3. Click "新規追加" (Add New) or "追加" (Add)
+
+4. Copy and paste ONE of the commands above
+
+5. Save the cron job
+
+6. Done! Your data will now import automatically
+
+
+========================================
+VERIFY IT'S WORKING:
+========================================
+
+After setting up the cron job, wait 15-30 minutes, then:
+
+1. Check your dashboard
+   - The "Last updated from Google Sheets" timestamp should update automatically
+
+2. Manual test (optional):
+   Visit this URL in your browser:
+   https://exseed.main.jp/WG/analysis/OCC/auto_import_cron.php?auth_key=exseed_auto_import_2025
+
+3. Check the logs folder on your server:
+   /home/users/2/main.jp-exseed/web/WG/analysis/OCC/logs/
+
+
+========================================
+RECOMMENDED CHOICE:
+========================================
+
+For most businesses, we recommend OPTION 1 (Every 15 Minutes)
+This ensures your dashboard always has fresh data without overwhelming the server.
+
+Copy this command:
+*/15 * * * * /usr/bin/php /home/users/2/main.jp-exseed/web/WG/analysis/OCC/auto_import_cron.php
+
+
+========================================
